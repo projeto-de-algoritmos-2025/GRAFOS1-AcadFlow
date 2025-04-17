@@ -1,0 +1,459 @@
+{
+    "engineering_fields": [
+      {
+        "name": "Engenharia de Software",
+        "courses": [
+          {
+            "id": "CIC0004",
+            "name": "ALGORITMOS E PROGRAMAÇÃO DE COMPUTADORES",
+            "hours": 90,
+            "modality": "Presencial",
+            "semester": 1,
+            "prerequisites": [],
+            "corequisites": [],
+            "blocks": ["FGA0146", "FGA0158"]
+          },
+          {
+            "id": "FGA0161",
+            "name": "ENGENHARIA E AMBIENTE",
+            "hours": 60,
+            "modality": "Presencial",
+            "semester": 1,
+            "prerequisites": [],
+            "corequisites": [],
+            "blocks": []
+          },
+          {
+            "id": "FGA0163",
+            "name": "INTRODUÇÃO À ENGENHARIA",
+            "hours": 30,
+            "modality": "Presencial",
+            "semester": 1,
+            "prerequisites": [],
+            "corequisites": [],
+            "blocks": []
+          },
+          {
+            "id": "FGA0168",
+            "name": "DESENHO INDUSTRIAL ASSISTIDO POR COMPUTADOR",
+            "hours": 90,
+            "modality": "Presencial",
+            "semester": 1,
+            "prerequisites": [],
+            "corequisites": [],
+            "blocks": []
+          },
+          {
+            "id": "MAT0025",
+            "name": "CÁLCULO 1",
+            "hours": 90,
+            "modality": null,
+            "semester": 1,
+            "prerequisites": [],
+            "corequisites": [],
+            "blocks": ["MAT0026", "FGA0157"]
+          },
+          {
+            "id": "FGA0157",
+            "name": "PROBABILIDADE E ESTATÍSTICA APLICADO A ENGENHARIA",
+            "hours": 60,
+            "modality": "Presencial",
+            "semester": 2,
+            "prerequisites": ["MAT0025"],
+            "corequisites": [],
+            "blocks": []
+          },
+          {
+            "id": "IFD0171",
+            "name": "FISICA 1",
+            "hours": 60,
+            "modality": "Presencial",
+            "semester": 2,
+            "prerequisites": [],
+            "corequisites": [],
+            "blocks": []
+          },
+          {
+            "id": "IFD0173",
+            "name": "FISICA 1 EXPERIMENTAL",
+            "hours": 30,
+            "modality": "Presencial",
+            "semester": 2,
+            "prerequisites": [],
+            "corequisites": [],
+            "blocks": []
+          },
+          {
+            "id": "MAT0026",
+            "name": "CÁLCULO 2",
+            "hours": 90,
+            "modality": "Presencial",
+            "semester": 2,
+            "prerequisites": ["MAT0025"],
+            "corequisites": [],
+            "blocks": ["FGA0160"]
+          },
+          {
+            "id": "MAT0031",
+            "name": "INTRODUCAO A ALGEBRA LINEAR",
+            "hours": 60,
+            "modality": null,
+            "semester": 2,
+            "prerequisites": [],
+            "corequisites": [],
+            "blocks": ["FGA0073", "FGA0071"]
+          },
+          {
+            "id": "FGA0071",
+            "name": "PRÁTICA DE ELETRÔNICA DIGITAL 1",
+            "hours": 30,
+            "modality": "Presencial",
+            "semester": 3,
+            "prerequisites": ["MAT0031"],
+            "corequisites": ["FGA0073"],
+            "blocks": ["FGA0142"]
+          },
+          {
+            "id": "FGA0073",
+            "name": "TEORIA DE ELETRÔNICA DIGITAL 1",
+            "hours": 60,
+            "modality": "Presencial",
+            "semester": 3,
+            "prerequisites": ["MAT0031"],
+            "corequisites": ["FGA0071"],
+            "blocks": ["FGA0142"]
+          },
+          {
+            "id": "FGA0085",
+            "name": "MATEMÁTICA DISCRETA 1",
+            "hours": 60,
+            "modality": "Presencial",
+            "semester": 3,
+            "prerequisites": [],
+            "corequisites": [],
+            "blocks": ["FGA0108"]
+          },
+          {
+            "id": "FGA0133",
+            "name": "ENGENHARIA ECONÔMICA",
+            "hours": 60,
+            "modality": "Presencial",
+            "semester": 3,
+            "prerequisites": [],
+            "corequisites": [],
+            "blocks": ["FGA0307"]
+          },
+          {
+            "id": "FGA0158",
+            "name": "ORIENTAÇÃO A OBJETOS",
+            "hours": 60,
+            "modality": "Presencial",
+            "semester": 3,
+            "prerequisites": ["CIC0004"],
+            "corequisites": [],
+            "blocks": ["FGA0312", "FGA0210" ]
+          },
+          {
+            "id": "FGA0160",
+            "name": "MÉTODOS NUMÉRICOS PARA ENGENHARIA",
+            "hours": 60,
+            "modality": "Presencial",
+            "semester": 3,
+            "prerequisites": ["MAT0026"],
+            "corequisites": [],
+            "blocks": []
+          },
+          {
+            "id": "FGA0164",
+            "name": "HUMANIDADES E CIDADANIA",
+            "hours": 60,
+            "modality": null,
+            "semester": 3,
+            "prerequisites": [],
+            "corequisites": [],
+            "blocks": []
+          },
+          {
+            "id": "FGA0108",
+            "name": "MATEMÁTICA DISCRETA 2",
+            "hours": 60,
+            "modality": "Presencial",
+            "semester": 4,
+            "prerequisites": ["FGA0085"],
+            "corequisites": [],
+            "blocks": ["FGA0137"]
+          },
+          {
+            "id": "FGA0142",
+            "name": "FUNDAMENTOS DE ARQUITETUTA DE COMPUTADORES",
+            "hours": 60,
+            "modality": "Presencial",
+            "semester": 4,
+            "prerequisites": ["FGA0071", "FGA0073"],
+            "corequisites": [],
+            "blocks": ["FGA0170"]
+          },
+          {
+            "id": "FGA0146",
+            "name": "ESTRUTURAS DE DADOS 1",
+            "hours": 60,
+            "modality": "Presencial",
+            "semester": 4,
+            "prerequisites": ["CIC0004"],
+            "corequisites": [],
+            "blocks": ["FGA0030", "FGA0124", "FGA0003"]
+          },
+          {
+            "id": "FGA0303",
+            "name": "PROJETO INTEGRADOR DE ENGENHARIA 1",
+            "hours": 60,
+            "modality": "Presencial",
+            "semester": 4,
+            "prerequisites": [],
+            "corequisites": [],
+            "blocks": ["FGA0304"]
+          },
+          {
+            "id": "FGA0307",
+            "name": "GESTÃO DA PRODUÇÃO E QUALIDADE",
+            "hours": 60,
+            "modality": "Presencial",
+            "semester": 4,
+            "prerequisites": ["FGA0133"],
+            "corequisites": [],
+            "blocks": ["FGA0315"]
+          },
+          {
+            "id": "FGA0312",
+            "name": "MÉTODOS DE DESENVOLVIMENTO DE SOFTWARE",
+            "hours": 60,
+            "modality": null,
+            "semester": 4,
+            "prerequisites": ["FGA0158"],
+            "corequisites": [],
+            "blocks": ["FGA0313", "FGA0173", "FGA0314"]
+          },
+          {
+            "id": "FGA0003",
+            "name": "COMPILADORES 1",
+            "hours": 60,
+            "modality": "Presencial",
+            "semester": 5,
+            "prerequisites": ["FGA0146"],
+            "corequisites": [],
+            "blocks": ["FGA0210"]
+          },
+          {
+            "id": "FGA0030",
+            "name": "ESTRUTURAS DE DADOS 2",
+            "hours": 60,
+            "modality": "Presencial",
+            "semester": 5,
+            "prerequisites": ["FGA0146"],
+            "corequisites": [],
+            "blocks": ["FGA0244"]
+          },
+          {
+            "id": "FGA0137",
+            "name": "SISTEMAS DE BANCO DE DADOS 1",
+            "hours": 60,
+            "modality": "Presencial",
+            "semester": 5,
+            "prerequisites": ["FGA0108"],
+            "corequisites": [],
+            "blocks": ["FGA0060"]
+          },
+          {
+            "id": "FGA0170",
+            "name": "FUNDAMENTOS DE SISTEMAS OPERACIONAIS",
+            "hours": 60,
+            "modality": "Presencial",
+            "semester": 5,
+            "prerequisites": ["FGA0142"],
+            "corequisites": [],
+            "blocks": ["FGA0109", "FGA0211"]
+          },
+          {
+            "id": "FGA0173",
+            "name": "INTERAÇÃO HUMANO COMPUTADOR",
+            "hours": 60,
+            "modality": "Presencial",
+            "semester": 5,
+            "prerequisites": ["FGA0312"],
+            "corequisites": [],
+            "blocks": ["FGA0315"]
+          },
+          {
+            "id": "FGA0313",
+            "name": "REQUISITOS DE SOFTWARE",
+            "hours": 60,
+            "modality": null,
+            "semester": 5,
+            "prerequisites": ["FGA0312"],
+            "corequisites": [],
+            "blocks": ["FGA0208", "FGA0314"]
+          },
+          {
+            "id": "FGA0060",
+            "name": "SISTEMAS DE BANCO DE DADOS 2",
+            "hours": 60,
+            "modality": "Presencial",
+            "semester": 6,
+            "prerequisites": ["FGA0137"],
+            "corequisites": [],
+            "blocks": []
+          },
+          {
+            "id": "FGA0124",
+            "name": "PROJETO DE ALGORITMOS",
+            "hours": 60,
+            "modality": "Presencial",
+            "semester": 6,
+            "prerequisites": ["FGA0146"],
+            "corequisites": [],
+            "blocks": []
+          },
+          {
+            "id": "FGA0208",
+            "name": "ARQUITETURA E DESENHO DE SOFTWARE",
+            "hours": 60,
+            "modality": "Presencial",
+            "semester": 6,
+            "prerequisites": ["FGA0313"],
+            "corequisites": [],
+            "blocks": ["FGA0242"]
+          },
+          {
+            "id": "FGA0211",
+            "name": "FUNDAMENTOS DE REDES DE COMPUTADORES",
+            "hours": 60,
+            "modality": "Presencial",
+            "semester": 6,
+            "prerequisites": ["FGA0170"],
+            "corequisites": [],
+            "blocks": ["FGA0244"]
+          },
+          {
+            "id": "FGA0314",
+            "name": "TESTES DE SOFTWARE",
+            "hours": 60,
+            "modality": "Presencial",
+            "semester": 6,
+            "prerequisites": ["FGA0312", "FGA0313"],
+            "corequisites": [],
+            "blocks": ["FGA0242", "FGA0317"]
+          },
+          {
+            "id": "FGA0315",
+            "name": "QUALIDADE DE SOFTWARE 1",
+            "hours": 60,
+            "modality": "Presencial",
+            "semester": 6,
+            "prerequisites": ["FGA0307", "FGA0173"],
+            "corequisites": [],
+            "blocks": []
+          },
+          {
+            "id": "FGA0109",
+            "name": "FUNDAMENTOS DE SISTEMAS EMBARCADOS",
+            "hours": 60,
+            "modality": "Presencial",
+            "semester": 7,
+            "prerequisites": ["FGA0170"],
+            "corequisites": [],
+            "blocks": []
+          },
+          {
+            "id": "FGA0210",
+            "name": "PARADIGMAS DE PROGRAMAÇÃO",
+            "hours": 60,
+            "modality": "Presencial",
+            "semester": 7,
+            "prerequisites": ["FGA0003"],
+            "corequisites": [],
+            "blocks": []
+          },
+          {
+            "id": "FGA0242",
+            "name": "TÉCNICAS DE PROGRAMAÇÃO EM PLATAFORMAS EMERGENTES",
+            "hours": 60,
+            "modality": "Presencial",
+            "semester": 7,
+            "prerequisites": ["FGA0208", "FGA0314"],
+            "corequisites": [],
+            "blocks": ["FGA0316"]
+          },
+          {
+            "id": "FGA0244",
+            "name": "PROGRAMAÇÃO PARA SISTEMAS PARALELOS E DISTRIBUÍDOS",
+            "hours": 60,
+            "modality": "Presencial",
+            "semester": 7,
+            "prerequisites": ["FGA0030", "FGA0211"],
+            "corequisites": [],
+            "blocks": []
+          },
+          {
+            "id": "FGA0288",
+            "name": "ESTÁGIO SUPERVISIONADO",
+            "hours": 210,
+            "modality": "Presencial",
+            "semester": 8,
+            "prerequisites": [],
+            "corequisites": [],
+            "blocks": []
+          },
+          {
+            "id": "FGA0316",
+            "name": "ENGENHARIA DE PRODUTO DE SOFTWARE",
+            "hours": 60,
+            "modality": "Presencial",
+            "semester": 8,
+            "prerequisites": ["FGA0242"],
+            "corequisites": [],
+            "blocks": []
+          },
+          {
+            "id": "FGA0317",
+            "name": "GERÊNCIA DE CONFIGURAÇÃO E EVOLUÇÃO DE SOFTWARE",
+            "hours": 60,
+            "modality": "Presencial",
+            "semester": 8,
+            "prerequisites": ["FGA0314"],
+            "corequisites": [],
+            "blocks": []
+          },
+          {
+            "id": "FGA0287",
+            "name": "TRABALHO DE CONCLUSÃO DE CURSO 1",
+            "hours": 60,
+            "modality": "Presencial",
+            "semester": 9,
+            "prerequisites": [],
+            "corequisites": [],
+            "blocks": ["FGA0290"]
+          },
+          {
+            "id": "FGA0304",
+            "name": "PROJETO INTEGRADOR DE ENGENHARIA 2",
+            "hours": 90,
+            "modality": "Presencial",
+            "semester": 9,
+            "prerequisites": ["FGA0303"],
+            "corequisites": [],
+            "blocks": []
+          },
+          {
+            "id": "FGA0290",
+            "name": "TRABALHO DE CONCLUSÃO DE CURSO 2",
+            "hours": 90,
+            "modality": "Presencial",
+            "semester": 10,
+            "prerequisites": ["FGA0287"],
+            "corequisites": [],
+            "blocks": []
+          }
+        ]
+      }
+    ]
+  }
