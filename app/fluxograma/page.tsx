@@ -92,16 +92,16 @@ export default function FluxogramaPage() {
     <div className="min-h-screen bg-white">
       <div className="container mx-auto px-4 py-6">
         <div className="flex justify-between items-center mb-8">
-          <Link href="/curso" className="inline-flex items-center text-teal-600 hover:text-teal-700">
+          <Link href="/curso" className="inline-flex items-center text-navy-950 hover:text-navy-800">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Voltar para seleção de curso
           </Link>
 
           <h1 className="text-2xl font-bold text-gray-800">Fluxograma - Engenharia de Software</h1>
 
-          <Link href="/preferencias">
+          <Link href={`/preferencias?disciplinasCursadas=${encodeURIComponent(JSON.stringify(disciplinasCursadas))}`}>
             <Button
-              className="bg-teal-600 hover:bg-teal-700 text-white rounded-lg transition-all hover:shadow-lg flex items-center gap-2 group"
+              className="bg-navy-950 hover:bg-navy-900 text-white rounded-lg transition-all hover:shadow-lg flex items-center gap-2 group"
               disabled={disciplinasCursadas.length === 0}
             >
               Continuar
@@ -111,7 +111,7 @@ export default function FluxogramaPage() {
         </div>
 
         <div className="bg-gray-50 rounded-xl p-4 mb-6 flex items-center">
-          <Info className="h-5 w-5 text-teal-600 mr-3 flex-shrink-0" />
+          <Info className="h-5 w-5 text-blue-950 mr-3 flex-shrink-0" />
           <p className="text-gray-600 text-sm">
             Clique nas disciplinas para marcá-las como cursadas. Ao marcar uma disciplina, seus pré-requisitos serão
             automaticamente marcados também. Arraste para a direita para ver mais semestres.
@@ -127,7 +127,7 @@ export default function FluxogramaPage() {
 
             <div className="flex items-center gap-4">
               <div className="flex items-center">
-                <div className="w-4 h-4 bg-teal-500 rounded-sm mr-2"></div>
+                <div className="w-4 h-4 bg-navy-950 rounded-sm mr-2"></div>
                 <span className="text-sm text-gray-600">Cursada</span>
               </div>
 
@@ -208,15 +208,17 @@ export default function FluxogramaPage() {
                 </p>
                 <div className="w-full bg-gray-200 rounded-full h-2 mt-2">
                   <div
-                    className="bg-teal-600 h-2 rounded-full"
+                    className="bg-navy-950 h-2 rounded-full"
                     style={{ width: `${(disciplinasCursadas.length / disciplinasData.length) * 100}%` }}
                   ></div>
                 </div>
               </div>
 
-              <Link href="/preferencias">
+              <Link
+                href={`/preferencias?disciplinasCursadas=${encodeURIComponent(JSON.stringify(disciplinasCursadas))}`}
+              >
                 <Button
-                  className="bg-teal-600 hover:bg-teal-700 text-white rounded-lg transition-all hover:shadow-lg flex items-center gap-2 group"
+                  className="bg-navy-950 hover:bg-navy-900 text-white rounded-lg transition-all hover:shadow-lg flex items-center gap-2 group"
                   disabled={disciplinasCursadas.length === 0}
                 >
                   Continuar

@@ -2,26 +2,36 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Slider } from "@/components/ui/slider"
 import { ArrowLeft, ArrowRight, HelpCircle } from "lucide-react"
+import { useSearchParams } from "next/navigation"
 
 export default function PreferenciasPage() {
   const [semestreAtual, setSemestreAtual] = useState("5")
   const [horasMaximas, setHorasMaximas] = useState(360)
   const [diasDisponiveis, setDiasDisponiveis] = useState("5")
 
+  const searchParams = useSearchParams()
+  const disciplinasCursadasParam = searchParams.get("disciplinasCursadas") || "[]"
+  const [disciplinasCursadas, setDisciplinasCursadas] = useState<string[]>(JSON.parse(disciplinasCursadasParam))
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-teal-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       <div className="container mx-auto px-4 py-12">
-        <Link href="/fluxograma" className="inline-flex items-center text-teal-600 hover:text-teal-700 mb-8">
+        <Link href="/fluxograma" className="inline-flex items-center text-navy-950 hover:text-navy-800 mb-8">
           <ArrowLeft className="mr-2 h-4 w-4" />
           Voltar para o fluxograma
         </Link>
 
         <div className="max-w-2xl mx-auto bg-white rounded-xl shadow-md p-8">
+          <div className="flex justify-center mb-6">
+            <Image src="/logo.png" alt="AcadFlow Logo" width={80} height={80} />
+          </div>
+
           <h1 className="text-3xl font-bold text-gray-800 mb-6">Suas preferências</h1>
           <p className="text-gray-600 mb-8">
             Para otimizar seu plano de estudos, precisamos de algumas informações sobre sua situação atual e
@@ -35,7 +45,7 @@ export default function PreferenciasPage() {
                 <HelpCircle className="h-4 w-4 text-gray-400" />
               </Label>
               <Select value={semestreAtual} onValueChange={setSemestreAtual}>
-                <SelectTrigger className="mt-2 focus:ring-teal-500">
+                <SelectTrigger className="mt-2 focus:ring-blue-500">
                   <SelectValue placeholder="Selecione seu semestre atual" />
                 </SelectTrigger>
                 <SelectContent>
@@ -64,7 +74,7 @@ export default function PreferenciasPage() {
                 />
                 <div className="flex justify-between text-sm text-gray-500 mt-1">
                   <span>180h (3 disciplinas)</span>
-                  <span className="font-medium text-teal-600">
+                  <span className="font-medium text-navy-950">
                     {horasMaximas}h ({Math.round(horasMaximas / 60)} disciplinas)
                   </span>
                   <span>540h (9 disciplinas)</span>
@@ -78,7 +88,7 @@ export default function PreferenciasPage() {
                 <HelpCircle className="h-4 w-4 text-gray-400" />
               </Label>
               <Select value={diasDisponiveis} onValueChange={setDiasDisponiveis}>
-                <SelectTrigger className="mt-2 focus:ring-teal-500">
+                <SelectTrigger className="mt-2 focus:ring-blue-500">
                   <SelectValue placeholder="Selecione os dias disponíveis" />
                 </SelectTrigger>
                 <SelectContent>
@@ -97,7 +107,7 @@ export default function PreferenciasPage() {
                 <HelpCircle className="h-4 w-4 text-gray-400" />
               </Label>
               <Select defaultValue="tempo">
-                <SelectTrigger className="mt-2 focus:ring-teal-500">
+                <SelectTrigger className="mt-2 focus:ring-blue-500">
                   <SelectValue placeholder="Selecione sua prioridade" />
                 </SelectTrigger>
                 <SelectContent>
@@ -109,8 +119,10 @@ export default function PreferenciasPage() {
             </div>
 
             <div className="pt-4">
-              <Link href="/resultado">
-                <Button className="w-full bg-teal-600 hover:bg-teal-700 text-white py-6 rounded-lg text-lg font-medium transition-all hover:shadow-lg flex items-center justify-center gap-2 group">
+              <Link
+                href={`/resultado?semestre=${semestreAtual}&horasMaximas=${horasMaximas}&diasDisponiveis=${diasDisponiveis}&disciplinasCursadas=${encodeURIComponent(JSON.stringify(disciplinasCursadas))}`}
+              >
+                <Button className="w-full bg-navy-950 hover:bg-navy-900 text-white py-6 rounded-lg text-lg font-medium transition-all hover:shadow-lg flex items-center justify-center gap-2 group">
                   Gerar meu plano de estudos
                   <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Button>

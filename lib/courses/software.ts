@@ -1,8 +1,8 @@
-import { Course } from './types';
+import type { Course } from "./types"
 
 const softwareEngineering: Course = {
-  id: 'software-engineering',
-  name: 'Engenharia de Software',
+  id: "software-engineering",
+  name: "Engenharia de Software",
   disciplines: [
     // 1º Semestre
     {
@@ -11,6 +11,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 90,
       semestre: 1,
       preRequisitos: [],
+      coRequisitos: [],
+      bloqueia: ["FGA0146", "FGA0158"],
     },
     {
       codigo: "FGA0161",
@@ -18,6 +20,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 60,
       semestre: 1,
       preRequisitos: [],
+      coRequisitos: [],
+      bloqueia: [],
     },
     {
       codigo: "FGA0163",
@@ -25,6 +29,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 30,
       semestre: 1,
       preRequisitos: [],
+      coRequisitos: [],
+      bloqueia: [],
     },
     {
       codigo: "FGA0168",
@@ -32,6 +38,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 90,
       semestre: 1,
       preRequisitos: [],
+      coRequisitos: [],
+      bloqueia: [],
     },
     {
       codigo: "MAT0025",
@@ -39,6 +47,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 90,
       semestre: 1,
       preRequisitos: [],
+      coRequisitos: [],
+      bloqueia: ["MAT0026", "FGA0157"],
     },
 
     // 2º Semestre
@@ -48,6 +58,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 60,
       semestre: 2,
       preRequisitos: ["MAT0025"],
+      coRequisitos: [],
+      bloqueia: [],
     },
     {
       codigo: "IFD0171",
@@ -55,6 +67,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 60,
       semestre: 2,
       preRequisitos: [],
+      coRequisitos: [],
+      bloqueia: [],
     },
     {
       codigo: "IFD0173",
@@ -62,6 +76,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 30,
       semestre: 2,
       preRequisitos: [],
+      coRequisitos: [],
+      bloqueia: [],
     },
     {
       codigo: "MAT0026",
@@ -69,6 +85,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 90,
       semestre: 2,
       preRequisitos: ["MAT0025"],
+      coRequisitos: [],
+      bloqueia: ["FGA0160"],
     },
     {
       codigo: "MAT0031",
@@ -76,6 +94,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 60,
       semestre: 2,
       preRequisitos: [],
+      coRequisitos: [],
+      bloqueia: ["FGA0073", "FGA0071"],
     },
 
     // 3º Semestre
@@ -85,6 +105,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 30,
       semestre: 3,
       preRequisitos: ["MAT0031"],
+      coRequisitos: ["FGA0073"],
+      bloqueia: ["FGA0142"],
     },
     {
       codigo: "FGA0073",
@@ -92,6 +114,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 60,
       semestre: 3,
       preRequisitos: ["MAT0031"],
+      coRequisitos: ["FGA0071"],
+      bloqueia: ["FGA0142"],
     },
     {
       codigo: "FGA0085",
@@ -99,6 +123,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 60,
       semestre: 3,
       preRequisitos: [],
+      coRequisitos: [],
+      bloqueia: ["FGA0108"],
     },
     {
       codigo: "FGA0133",
@@ -106,6 +132,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 60,
       semestre: 3,
       preRequisitos: [],
+      coRequisitos: [],
+      bloqueia: ["FGA0307"],
     },
     {
       codigo: "FGA0158",
@@ -113,6 +141,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 60,
       semestre: 3,
       preRequisitos: ["CIC0004"],
+      coRequisitos: [],
+      bloqueia: ["FGA0312", "FGA0210"],
     },
     {
       codigo: "FGA0160",
@@ -120,6 +150,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 60,
       semestre: 3,
       preRequisitos: ["MAT0026"],
+      coRequisitos: [],
+      bloqueia: [],
     },
     {
       codigo: "FGA0164",
@@ -127,6 +159,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 60,
       semestre: 3,
       preRequisitos: [],
+      coRequisitos: [],
+      bloqueia: [],
     },
 
     // 4º Semestre
@@ -136,6 +170,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 60,
       semestre: 4,
       preRequisitos: ["FGA0085"],
+      coRequisitos: [],
+      bloqueia: ["FGA0137"],
     },
     {
       codigo: "FGA0142",
@@ -143,6 +179,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 60,
       semestre: 4,
       preRequisitos: ["FGA0071", "FGA0073"],
+      coRequisitos: [],
+      bloqueia: ["FGA0170"],
     },
     {
       codigo: "FGA0146",
@@ -150,6 +188,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 60,
       semestre: 4,
       preRequisitos: ["CIC0004"],
+      coRequisitos: [],
+      bloqueia: ["FGA0030", "FGA0124", "FGA0003"],
     },
     {
       codigo: "FGA0303",
@@ -157,6 +197,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 60,
       semestre: 4,
       preRequisitos: [],
+      coRequisitos: [],
+      bloqueia: ["FGA0304"],
     },
     {
       codigo: "FGA0307",
@@ -164,6 +206,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 60,
       semestre: 4,
       preRequisitos: ["FGA0133"],
+      coRequisitos: [],
+      bloqueia: ["FGA0315"],
     },
     {
       codigo: "FGA0312",
@@ -171,6 +215,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 60,
       semestre: 4,
       preRequisitos: ["FGA0158"],
+      coRequisitos: [],
+      bloqueia: ["FGA0313", "FGA0173", "FGA0314"],
     },
 
     // 5º Semestre
@@ -180,6 +226,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 60,
       semestre: 5,
       preRequisitos: ["FGA0146"],
+      coRequisitos: [],
+      bloqueia: ["FGA0210"],
     },
     {
       codigo: "FGA0030",
@@ -187,6 +235,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 60,
       semestre: 5,
       preRequisitos: ["FGA0146"],
+      coRequisitos: [],
+      bloqueia: ["FGA0244"],
     },
     {
       codigo: "FGA0137",
@@ -194,6 +244,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 60,
       semestre: 5,
       preRequisitos: ["FGA0108"],
+      coRequisitos: [],
+      bloqueia: ["FGA0060"],
     },
     {
       codigo: "FGA0170",
@@ -201,6 +253,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 60,
       semestre: 5,
       preRequisitos: ["FGA0142"],
+      coRequisitos: [],
+      bloqueia: ["FGA0109", "FGA0211"],
     },
     {
       codigo: "FGA0173",
@@ -208,6 +262,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 60,
       semestre: 5,
       preRequisitos: ["FGA0312"],
+      coRequisitos: [],
+      bloqueia: ["FGA0315"],
     },
     {
       codigo: "FGA0313",
@@ -215,6 +271,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 60,
       semestre: 5,
       preRequisitos: ["FGA0312"],
+      coRequisitos: [],
+      bloqueia: ["FGA0208", "FGA0314"],
     },
 
     // 6º Semestre
@@ -224,6 +282,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 60,
       semestre: 6,
       preRequisitos: ["FGA0137"],
+      coRequisitos: [],
+      bloqueia: [],
     },
     {
       codigo: "FGA0124",
@@ -231,6 +291,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 60,
       semestre: 6,
       preRequisitos: ["FGA0146"],
+      coRequisitos: [],
+      bloqueia: [],
     },
     {
       codigo: "FGA0208",
@@ -238,6 +300,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 60,
       semestre: 6,
       preRequisitos: ["FGA0313"],
+      coRequisitos: [],
+      bloqueia: ["FGA0242"],
     },
     {
       codigo: "FGA0211",
@@ -245,13 +309,17 @@ const softwareEngineering: Course = {
       cargaHoraria: 60,
       semestre: 6,
       preRequisitos: ["FGA0170"],
+      coRequisitos: [],
+      bloqueia: ["FGA0244"],
     },
     {
       codigo: "FGA0314",
       nome: "TESTES DE SOFTWARE",
       cargaHoraria: 60,
       semestre: 6,
-      preRequisitos: ["FGA0313"],
+      preRequisitos: ["FGA0312", "FGA0313"],
+      coRequisitos: [],
+      bloqueia: ["FGA0242", "FGA0317"],
     },
     {
       codigo: "FGA0315",
@@ -259,6 +327,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 60,
       semestre: 6,
       preRequisitos: ["FGA0307", "FGA0173"],
+      coRequisitos: [],
+      bloqueia: [],
     },
 
     // 7º Semestre
@@ -268,13 +338,17 @@ const softwareEngineering: Course = {
       cargaHoraria: 60,
       semestre: 7,
       preRequisitos: ["FGA0170"],
+      coRequisitos: [],
+      bloqueia: [],
     },
     {
       codigo: "FGA0210",
       nome: "PARADIGMAS DE PROGRAMAÇÃO",
       cargaHoraria: 60,
       semestre: 7,
-      preRequisitos: ["FGA0003", "FGA0160"],
+      preRequisitos: ["FGA0003"],
+      coRequisitos: [],
+      bloqueia: [],
     },
     {
       codigo: "FGA0242",
@@ -282,6 +356,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 60,
       semestre: 7,
       preRequisitos: ["FGA0208", "FGA0314"],
+      coRequisitos: [],
+      bloqueia: ["FGA0316"],
     },
     {
       codigo: "FGA0244",
@@ -289,6 +365,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 60,
       semestre: 7,
       preRequisitos: ["FGA0030", "FGA0211"],
+      coRequisitos: [],
+      bloqueia: [],
     },
 
     // 8º Semestre
@@ -298,6 +376,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 210,
       semestre: 8,
       preRequisitos: [],
+      coRequisitos: [],
+      bloqueia: [],
     },
     {
       codigo: "FGA0316",
@@ -305,6 +385,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 60,
       semestre: 8,
       preRequisitos: ["FGA0242"],
+      coRequisitos: [],
+      bloqueia: [],
     },
     {
       codigo: "FGA0317",
@@ -312,6 +394,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 60,
       semestre: 8,
       preRequisitos: ["FGA0314"],
+      coRequisitos: [],
+      bloqueia: [],
     },
 
     // 9º Semestre
@@ -321,6 +405,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 60,
       semestre: 9,
       preRequisitos: [],
+      coRequisitos: [],
+      bloqueia: ["FGA0290"],
     },
     {
       codigo: "FGA0304",
@@ -328,6 +414,8 @@ const softwareEngineering: Course = {
       cargaHoraria: 90,
       semestre: 9,
       preRequisitos: ["FGA0303"],
+      coRequisitos: [],
+      bloqueia: [],
     },
 
     // 10º Semestre
@@ -337,8 +425,10 @@ const softwareEngineering: Course = {
       cargaHoraria: 90,
       semestre: 10,
       preRequisitos: ["FGA0287"],
+      coRequisitos: [],
+      bloqueia: [],
     },
-  ]
-};
+  ],
+}
 
-export default softwareEngineering; 
+export default softwareEngineering

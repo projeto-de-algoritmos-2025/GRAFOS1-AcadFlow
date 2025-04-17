@@ -6,14 +6,15 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { ArrowLeft, ArrowRight, Search } from "lucide-react"
 import Link from "next/link"
-import courses from '@/lib/courses'
+import Image from "next/image"
+import courses from "@/lib/courses"
 
 export default function CursoPage() {
   const [curso, setCurso] = useState("")
   const [pesquisando, setPesquisando] = useState(false)
   const [cursoSelecionado, setCursoSelecionado] = useState("")
 
-  const cursosSugeridos = courses.map(course => course.name)
+  const cursosSugeridos = courses.map((course) => course.name)
 
   const handlePesquisar = () => {
     setPesquisando(true)
@@ -24,15 +25,19 @@ export default function CursoPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-teal-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       <div className="container mx-auto px-4 py-12">
-        <Link href="/" className="inline-flex items-center text-teal-600 hover:text-teal-700 mb-8">
+        <Link href="/" className="inline-flex items-center text-navy-950 hover:text-navy-800 mb-8">
           <ArrowLeft className="mr-2 h-4 w-4" />
           Voltar para a página inicial
         </Link>
 
         <div className="max-w-2xl mx-auto bg-white rounded-xl shadow-md p-8">
-          <h1 className="text-3xl font-bold text-gray-800 mb-6">Selecione seu curso</h1>
+          <div className="flex justify-center mb-6">
+            <Image src="/logo.png" alt="AcadFlow Logo" width={80} height={80} />
+          </div>
+
+          <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">Selecione seu curso</h1>
           <p className="text-gray-600 mb-8">
             Digite o nome do seu curso para visualizar o fluxograma de disciplinas e começar a planejar sua jornada
             acadêmica.
@@ -49,12 +54,12 @@ export default function CursoPage() {
                   placeholder="Ex: Engenharia de Software"
                   value={curso}
                   onChange={(e) => setCurso(e.target.value)}
-                  className="rounded-r-none focus-visible:ring-teal-500"
+                  className="rounded-r-none focus-visible:ring-blue-500"
                 />
                 <Button
                   onClick={handlePesquisar}
                   disabled={!curso || pesquisando}
-                  className="rounded-l-none bg-teal-600 hover:bg-teal-700"
+                  className="rounded-l-none bg-navy-950 hover:bg-navy-900"
                 >
                   {pesquisando ? "Pesquisando..." : <Search className="h-4 w-4" />}
                 </Button>
@@ -72,8 +77,8 @@ export default function CursoPage() {
                         key={index}
                         className={`p-3 rounded-lg border cursor-pointer transition-colors ${
                           cursoSelecionado === cursoItem
-                            ? "border-teal-500 bg-teal-50"
-                            : "border-gray-200 hover:border-teal-300 hover:bg-teal-50/50"
+                            ? "border-navy-500 bg-blue-50"
+                            : "border-gray-200 hover:border-blue-300 hover:bg-blue-50/50"
                         }`}
                         onClick={() => {
                           setCursoSelecionado(cursoItem)
@@ -90,7 +95,7 @@ export default function CursoPage() {
             <div className="pt-4">
               <Link href={cursoSelecionado ? "/fluxograma" : "#"}>
                 <Button
-                  className="w-full bg-teal-600 hover:bg-teal-700 text-white py-6 rounded-lg text-lg font-medium transition-all hover:shadow-lg flex items-center justify-center gap-2 group"
+                  className="w-full bg-navy-950 hover:bg-navy-900 text-white py-6 rounded-lg text-lg font-medium transition-all hover:shadow-lg flex items-center justify-center gap-2 group"
                   disabled={!cursoSelecionado}
                 >
                   Visualizar fluxograma
