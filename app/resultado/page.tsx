@@ -63,7 +63,7 @@ export default function ResultadoPage() {
         <div className="bg-white rounded-xl shadow-md overflow-hidden">
           <div className="p-6 border-b border-gray-200">
             <div className="flex items-center gap-4">
-              <Image src="/logo.png" alt="AcadFlow Logo" width={50} height={50} />
+              <Image src="/logoNew.png" alt="AcadFlow Logo" width={50} height={50} />
               <div>
                 <h1 className="text-2xl font-bold text-gray-800">Seu plano de estudos otimizado</h1>
                 <p className="text-gray-600 mt-2">

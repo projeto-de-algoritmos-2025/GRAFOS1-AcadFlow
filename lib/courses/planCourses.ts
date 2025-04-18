@@ -32,8 +32,8 @@ export function planCourses(
     throw new Error("currentSemester must be between 1 and 10")
   }
 
-  if (maxHoursPerSemester < 180 || maxHoursPerSemester > 540) {
-    throw new Error("maxHoursPerSemester must be between 180 and 540")
+  if (maxHoursPerSemester < 30 || maxHoursPerSemester > 480) {
+    throw new Error("maxHoursPerSemester must be between 30 and 480")
   }
 
   const courses = softwareEngineering.disciplines

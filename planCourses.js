@@ -1,155 +1,187 @@
-// planCourses.js
-
 const fluxo = require("./fluxo.json")
 
-/**
- * Planeja disciplinas a cursar com base em horas disponíveis e disciplinas já cursidas.
- * @param {number} availableHours - Horas disponíveis (mínimo 30h, máximo 480h).
- * @param {Array<{id: string}>} alreadyDone - Lista de objetos com apenas o id das disciplinas já cursidas.
- * @returns {Object} - Ordem topológica, cursos prioritários, sugestões de matrícula, bloqueios diretos e indiretos.
- */
-function planCourses(availableHours, alreadyDone) {
-  if (availableHours < 30 || availableHours > 480) {
-    throw new Error("availableHours must be between 30 and 480")
+function validarHorasDisponiveis(horasDisponiveis) {
+  if (horasDisponiveis < 30 || horasDisponiveis > 480) {
+    throw new Error("horasDisponiveis deve estar entre 30 e 480")
   }
+}
 
-  const field = fluxo.engineering_fields.find((f) => f.name === "Engenharia de Software")
-  if (!field) throw new Error("Engenharia de Software não encontrada no JSON")
-  const courses = field.courses
-  const courseMap = new Map(courses.map((c) => [c.id, c]))
+function obterCursosEngenharia() {
+  const area = fluxo.engineering_fields.find((f) => f.name === "Engenharia de Software")
+  if (!area) throw new Error("Engenharia de Software não encontrada no JSON")
+  return area.courses
+}
 
-  const adj = new Map()
-  const indegree = new Map()
-  const directBlocks = new Map()
+function inicializarGrafo(cursos) {
+  const adjacencias = new Map()
+  const grauEntrada = new Map()
+  const bloqueiosDiretos = new Map()
 
-  courses.forEach((c) => {
-    indegree.set(c.id, 0)
-    directBlocks.set(c.id, c.blocks.length)
-    adj.set(c.id, [])
+  cursos.forEach((curso) => {
+    grauEntrada.set(curso.id, 0)
+    bloqueiosDiretos.set(curso.id, curso.blocks.length)
+    adjacencias.set(curso.id, [])
   })
 
-  courses.forEach((c) => {
-    c.prerequisites.forEach((pre) => {
-      if (adj.has(pre)) {
-        adj.get(pre).push(c.id)
-        indegree.set(c.id, indegree.get(c.id) + 1)
+  cursos.forEach((curso) => {
+    curso.prerequisites.forEach((preRequisito) => {
+      if (adjacencias.has(preRequisito)) {
+        adjacencias.get(preRequisito).push(curso.id)
+        grauEntrada.set(curso.id, grauEntrada.get(curso.id) + 1)
       }
     })
   })
 
-  const queue = []
-  indegree.forEach((deg, id) => {
-    if (deg === 0) queue.push(id)
+  return { adjacencias, grauEntrada, bloqueiosDiretos }
+}
+
+function ordenarTopologicamente(adjacencias, grauEntrada) {
+  const fila = []
+  const ordemTopologica = []
+
+  grauEntrada.forEach((grau, id) => {
+    if (grau === 0) fila.push(id)
   })
-  const topo = []
-  while (queue.length) {
-    const id = queue.shift()
-    topo.push(id)
-    adj.get(id).forEach((neighbor) => {
-      indegree.set(neighbor, indegree.get(neighbor) - 1)
-      if (indegree.get(neighbor) === 0) queue.push(neighbor)
+
+  while (fila.length) {
+    const id = fila.shift()
+    ordemTopologica.push(id)
+    adjacencias.get(id).forEach((vizinho) => {
+      grauEntrada.set(vizinho, grauEntrada.get(vizinho) - 1)
+      if (grauEntrada.get(vizinho) === 0) fila.push(vizinho)
     })
   }
 
-  const doneSet = new Set(alreadyDone.map((c) => c.id))
+  return ordemTopologica
+}
 
-  const eligible = courses.filter((c) => !doneSet.has(c.id) && c.prerequisites.every((p) => doneSet.has(p)))
+function contarBloqueiosIndiretos(id, adjacencias, memo) {
+  if (memo[id] !== undefined) return memo[id]
+  let total = 0
+  adjacencias.get(id).forEach((vizinho) => {
+    total += 1 + contarBloqueiosIndiretos(vizinho, adjacencias, memo)
+  })
+  memo[id] = total
+  return total
+}
 
+function planejarCursosElegiveis(cursos, cursosConcluidos, adjacencias, bloqueiosDiretos) {
   const memo = {}
-  function countIndirect(id) {
-    if (memo[id] !== undefined) return memo[id]
-    let total = 0
-    adj.get(id).forEach((nxt) => {
-      total += 1 + countIndirect(nxt)
-    })
-    memo[id] = total
-    return total
-  }
+  const bloqueiosIndiretos = new Map()
 
-  const indirectBlocks = new Map()
-  courses.forEach((c) => indirectBlocks.set(c.id, countIndirect(c.id)))
-
-  eligible.sort((a, b) => {
-    const indirectDiff = indirectBlocks.get(b.id) - indirectBlocks.get(a.id)
-    if (indirectDiff !== 0) return indirectDiff
-    return directBlocks.get(b.id) - directBlocks.get(a.id)
+  cursos.forEach((curso) => {
+    bloqueiosIndiretos.set(curso.id, contarBloqueiosIndiretos(curso.id, adjacencias, memo))
   })
 
-  const prioritized = eligible.map((c) => c.id)
+  const elegiveis = cursos.filter(
+    (curso) =>
+      !cursosConcluidos.has(curso.id) &&
+      curso.prerequisites.every((pre) => cursosConcluidos.has(pre))
+  )
 
-  const suggested = []
-  let sumHours = 0
-  const considered = new Set()
+  elegiveis.sort((a, b) => {
+    const diferencaIndireta = bloqueiosIndiretos.get(b.id) - bloqueiosIndiretos.get(a.id)
+    if (diferencaIndireta !== 0) return diferencaIndireta
+    return bloqueiosDiretos.get(b.id) - bloqueiosDiretos.get(a.id)
+  })
 
-  for (const c of eligible) {
-    if (considered.has(c.id)) continue
-    const group = [c]
-    const coreqIds = c.corequisites.filter((cid) => !doneSet.has(cid))
-    const coreqs = coreqIds.map((cid) => courseMap.get(cid)).filter(Boolean)
-    group.push(...coreqs)
+  return { elegiveis, bloqueiosIndiretos }
+}
 
-    const groupHours = group.reduce((acc, cur) => acc + cur.hours, 0)
+function sugerirCursos(elegiveis, cursosConcluidos, mapaCursos, horasDisponiveis) {
+  const sugeridos = []
+  let horasTotais = 0
+  const considerados = new Set()
 
-    if (sumHours + groupHours <= availableHours) {
-      group.forEach((course) => {
-        if (!considered.has(course.id)) {
-          suggested.push(course.id)
-          considered.add(course.id)
-          sumHours += course.hours
+  for (const curso of elegiveis) {
+    if (considerados.has(curso.id)) continue
+    const grupo = [curso]
+    const idsCorequisitos = curso.corequisites.filter((id) => !cursosConcluidos.has(id))
+    const corequisitos = idsCorequisitos.map((id) => mapaCursos.get(id)).filter(Boolean)
+    grupo.push(...corequisitos)
+
+    const horasGrupo = grupo.reduce((acc, cur) => acc + cur.hours, 0)
+
+    if (horasTotais + horasGrupo <= horasDisponiveis) {
+      grupo.forEach((c) => {
+        if (!considerados.has(c.id)) {
+          sugeridos.push(c.id)
+          considerados.add(c.id)
+          horasTotais += c.hours
         }
       })
     }
   }
 
+  return { sugeridos, horasTotais }
+}
+
+function planejarDisciplinas(horasDisponiveis, jaConcluidas) {
+  validarHorasDisponiveis(horasDisponiveis)
+
+  const cursos = obterCursosEngenharia()
+  const mapaCursos = new Map(cursos.map((curso) => [curso.id, curso]))
+  const { adjacencias, grauEntrada, bloqueiosDiretos } = inicializarGrafo(cursos)
+
+  const ordemTopologica = ordenarTopologicamente(adjacencias, grauEntrada)
+  const cursosConcluidos = new Set(jaConcluidas.map((curso) => curso.id))
+
+  const { elegiveis, bloqueiosIndiretos } = planejarCursosElegiveis(
+    cursos,
+    cursosConcluidos,
+    adjacencias,
+    bloqueiosDiretos
+  )
+
+  const { sugeridos, horasTotais } = sugerirCursos(elegiveis, cursosConcluidos, mapaCursos, horasDisponiveis)
+
   return {
-    topologicalOrder: topo,
-    prioritizedCourses: prioritized,
-    suggestedCourses: suggested,
-    directBlocks,
-    indirectBlocks,
-    totalPlannedHours: sumHours,
+    ordemTopologica,
+    cursosPrioritarios: elegiveis.map((curso) => curso.id),
+    cursosSugeridos: sugeridos,
+    bloqueiosDiretos,
+    bloqueiosIndiretos,
+    horasPlanejadas: horasTotais,
   }
 }
 
-module.exports = planCourses
+module.exports = planejarDisciplinas
 
 if (require.main === module) {
-  const planCourses = require("./planCourses")
-  const availableHours = 480
-  const alreadyDone = [{ id: "MAT0025" }, { id: "MAT0031" }, { id: "FGA0071" }, { id: "FGA0158" }]
+  const horasDisponiveis = 480
+  const jaConcluidas = [{ id: "MAT0025" }, { id: "MAT0031" }, { id: "FGA0071" }, { id: "FGA0158" }]
 
-  const result = planCourses(availableHours, alreadyDone)
-  const fluxo = require("./fluxo.json")
-  const allCourses = fluxo.engineering_fields.find((f) => f.name === "Engenharia de Software").courses
-  const courseMap = new Map(allCourses.map((c) => [c.id, c]))
+  const resultado = planejarDisciplinas(horasDisponiveis, jaConcluidas)
+  const cursos = obterCursosEngenharia()
+  const mapaCursos = new Map(cursos.map((curso) => [curso.id, curso]))
 
   console.log("Ordenação Topológica Tradicional:")
-  result.topologicalOrder.forEach((id, index) => {
-    const course = courseMap.get(id)
-    const direct = result.directBlocks.get(id)
-    const indirect = result.indirectBlocks.get(id)
+  resultado.ordemTopologica.forEach((id, index) => {
+    const curso = mapaCursos.get(id)
+    const direto = resultado.bloqueiosDiretos.get(id)
+    const indireto = resultado.bloqueiosIndiretos.get(id)
     console.log(
-      `${index + 1}. ${id} - ${course.name} (tranca diretamente ${direct} e indiretamente ${indirect} matérias)`,
+      `${index + 1}. ${id} - ${curso.name} (tranca diretamente ${direto} e indiretamente ${indireto} matérias)`
     )
   })
 
   console.log("\nCursos Prioritários Elegíveis:")
-  result.prioritizedCourses.forEach((id) => {
-    const course = courseMap.get(id)
-    const direct = result.directBlocks.get(id)
-    const indirect = result.indirectBlocks.get(id)
-    console.log(`- ${id} - ${course.name} (tranca diretamente ${direct} e indiretamente ${indirect} matérias)`)
+  resultado.cursosPrioritarios.forEach((id) => {
+    const curso = mapaCursos.get(id)
+    const direto = resultado.bloqueiosDiretos.get(id)
+    const indireto = resultado.bloqueiosIndiretos.get(id)
+    console.log(`- ${id} - ${curso.name} (tranca diretamente ${direto} e indiretamente ${indireto} matérias)`)
   })
 
-  console.log(`\nSugestões até ${availableHours}h:`)
-  result.suggestedCourses.forEach((id) => {
-    const course = courseMap.get(id)
-    const direct = result.directBlocks.get(id)
-    const indirect = result.indirectBlocks.get(id)
-    console.log(`- ${id} - ${course.name} (tranca diretamente ${direct} e indiretamente ${indirect} matérias)`)
+  console.log(`\nSugestões até ${horasDisponiveis}h:`)
+  resultado.cursosSugeridos.forEach((id) => {
+    const curso = mapaCursos.get(id)
+    const direto = resultado.bloqueiosDiretos.get(id)
+    const indireto = resultado.bloqueiosIndiretos.get(id)
+    console.log(`- ${id} - ${curso.name} (tranca diretamente ${direto} e indiretamente ${indireto} matérias)`)
   })
 
   console.log(
-    `\nVocê informou que tem ${availableHours} horas disponíveis. Essa grade foi pensada para ocupar ${result.totalPlannedHours} horas.`,
+    `\nVocê informou que tem ${horasDisponiveis} horas disponíveis. Essa grade foi pensada para ocupar ${resultado.horasPlanejadas} horas.`
   )
 }

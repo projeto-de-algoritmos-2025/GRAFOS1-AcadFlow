@@ -79,15 +79,21 @@ O AcadFlow utiliza conceitos fundamentais de Grafos 1 para modelar as relações
    # ou
    yarn install
    ```
+3. Execute a build do projeto:
+   ```bash
+   npm run build
+   # ou
+   yarn build
+   ```
 
-3. Execute o projeto em modo de desenvolvimento:
+4. Execute o projeto em modo de desenvolvimento:
    ```bash
    npm run dev
    # ou
    yarn dev
    ```
 
-4. Acesse o aplicativo em seu navegador:
+5. Acesse o aplicativo em seu navegador:
    ```
    http://localhost:3000
    ```

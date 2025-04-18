@@ -34,7 +34,7 @@ export default function CursoPage() {
 
         <div className="max-w-2xl mx-auto bg-white rounded-xl shadow-md p-8">
           <div className="flex justify-center mb-6">
-            <Image src="/logo.png" alt="AcadFlow Logo" width={80} height={80} />
+            <Image src="/logoNew.png" alt="AcadFlow Logo" width={80} height={80} />
           </div>
 
           <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">Selecione seu curso</h1>

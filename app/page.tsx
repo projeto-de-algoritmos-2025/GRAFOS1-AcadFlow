@@ -9,7 +9,7 @@ export default function Home() {
       {/* Header */}
       <header className="container mx-auto py-6 px-4 flex justify-between items-center">
         <div className="flex items-center gap-2">
-          <Image src="/logo.png" alt="AcadFlow Logo" width={40} height={40} />
+          <Image src="/logoNew.png" alt="AcadFlow Logo" width={40} height={40} />
           <h1 className="text-2xl font-bold bg-gradient-to-r from-navy-950 to-blue-950 bg-clip-text text-transparent">
             AcadFlow
           </h1>
@@ -17,18 +17,8 @@ export default function Home() {
         <nav>
           <ul className="flex gap-6">
             <li>
-              <a href="#sobre" className="text-gray-700 hover:text-navy-950 transition-colors">
-                Sobre
-              </a>
-            </li>
-            <li>
               <a href="#como-funciona" className="text-gray-700 hover:text-navy-950 transition-colors">
                 Como Funciona
-              </a>
-            </li>
-            <li>
-              <a href="#contato" className="text-gray-700 hover:text-navy-950 transition-colors">
-                Contato
               </a>
             </li>
           </ul>
@@ -60,7 +50,7 @@ export default function Home() {
         <div className="flex-1 relative">
           <div className="relative w-full h-[400px] flex items-center justify-center">
             <Image
-              src="/logo.png"
+              src="/logoNew.png"
               alt="AcadFlow Logo"
               width={300}
               height={300}
@@ -185,7 +175,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-6 md:mb-0">
               <div className="flex items-center gap-2">
-                <Image src="/logo.png" alt="AcadFlow Logo" width={40} height={40} />
+                <Image src="/logo.png" alt="AcadFlow Logo" width={60} height={60} className="rounded-full" />
                 <h2 className="text-2xl font-bold text-white">AcadFlow</h2>
               </div>
               <p className="text-gray-400 mt-2">Planejamento acadêmico inteligente</p>
@@ -201,11 +191,6 @@ export default function Home() {
                     </a>
                   </li>
                   <li>
-                    <a href="#sobre" className="text-gray-400 hover:text-blue-light transition-colors">
-                      Sobre
-                    </a>
-                  </li>
-                  <li>
                     <a href="#como-funciona" className="text-gray-400 hover:text-blue-light transition-colors">
                       Como Funciona
                     </a>
@@ -218,15 +203,22 @@ export default function Home() {
                 <ul className="space-y-2">
                   <li>
                     <a
-                      href="mailto:contato@acadflow.com"
+                      href="https://github.com/edilbertocantuaria"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-gray-400 hover:text-blue-light transition-colors"
                     >
-                      contato@acadflow.com
+                      Edilberto Cantuária
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="text-gray-400 hover:text-blue-light transition-colors">
-                      Suporte
+                    <a
+                      href="https://github.com/kauaneiras"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-400 hover:text-blue-light transition-colors"
+                    >
+                      Kauan Eeiras
                     </a>
                   </li>
                 </ul>
