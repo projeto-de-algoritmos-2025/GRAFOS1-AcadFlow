@@ -11,6 +11,14 @@
 
 AcadFlow é um sistema de planejamento acadêmico para estudantes de Engenharia de Software da UnB, que utiliza conceitos de Grafos e Ordenação Topológica para otimizar o caminho até a formatura. O sistema analisa as dependências entre disciplinas (pré-requisitos, co-requisitos e bloqueios) e gera um plano de estudos personalizado baseado nas preferências do aluno.
 
+## 🎥 Apresentação 
+Assista a apresentação do trabalho no vídeo abaixo. Caso não esteja aparecendo, clique [aqui](https://youtu.be/V3wqctl_kco?si=BVsH8ywa-90Zda5A).
+<center>
+  
+[![Apresentação no YouTube](https://img.youtube.com/vi/V3wqctl_kco/0.jpg)](https://www.youtube.com/watch?v=V3wqctl_kco)
+
+</center>
+
 ### 🎯 Funcionalidades
 
 - Visualização do fluxograma completo do curso
