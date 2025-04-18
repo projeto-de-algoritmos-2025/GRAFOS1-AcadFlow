@@ -69,8 +69,8 @@ O AcadFlow utiliza conceitos fundamentais de Grafos 1 para modelar as relações
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seu-usuario/acadflow.git
-   cd acadflow
+   git clone https://github.com/projeto-de-algoritmos-2025/GRAFOS1-AcadFlow.git
+   cd GRAFOS1-AcadFlow/code
    ```
 
 2. Instale as dependências:
